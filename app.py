@@ -1,15 +1,15 @@
 import streamlit as st
 import os
-from dotenv import load_dotenv
+# from dotenv import load_dotenv
 import google.generativeai as genai
 from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain.prompts import PromptTemplate
 from langchain.chains import LLMChain
 
 # Load environment variables and configure the API key
-load_dotenv()
-os.environ["GOOGLE_API_KEY"] = os.getenv("GOOGLE_API_KEY")
-genai.configure(api_key=os.getenv("GOOGLE_API_KEY"))
+# load_dotenv()
+# os.environ["GOOGLE_API_KEY"] = os.getenv("GOOGLE_API_KEY")
+genai.configure(api_key=st.secrets["GOOGLE_API_KEY"])
 
 def get_feedback_chain():
     """Setup the chain for generating feedback on the essay."""
